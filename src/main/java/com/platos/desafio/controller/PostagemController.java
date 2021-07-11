@@ -32,9 +32,17 @@ public class PostagemController {
 		
 	}
 	
-	@GetMapping("temperatura/{temperatura}")
-	public ResponseEntity<List<Postagem>> GetByTemperatura(@PathVariable String temperatura){
-		return ResponseEntity.ok(repository.findAllByTemperaturaContainingIgnoreCase(temperatura));
+	@GetMapping("/estilo/{estilo}")
+	public ResponseEntity<List<Postagem>> GetByEstilo(@PathVariable String estilo){
+		return ResponseEntity.ok(repository.findAllByEstiloContainingIgnoreCase(estilo));
+	}
+	
+	@GetMapping("temperatura")
+	public ResponseEntity<PostagemSaidaDto> GetByTemperatura(@RequestBody PostagemEntradaDto entrada){
+		Postagem postagem = repository.findFirstByTemperaturaMinLessThanEqualAndTemperaturaMaxGreaterThanEqual(entrada.getTemperature(),entrada.getTemperature());
+		PostagemSaidaDto resultado = new PostagemSaidaDto();
+		resultado.setBeerStyle(postagem.getEstilo());
+		return ResponseEntity.ok(resultado);
 	}
 	
 	@PostMapping
@@ -51,5 +59,7 @@ public class PostagemController {
 	public void delete(@PathVariable long id) {
 		repository.deleteById(id);
 	}
+	
 
 }
+	

@@ -10,8 +10,9 @@ import com.platos.desafio.model.Postagem;
 public interface PostagemRepository extends JpaRepository<Postagem, Long> {
 	public List<Postagem> findAllByEstiloContainingIgnoreCase (String estilo);
 	
-	public List<Postagem> findAllByTemperaturaContainingIgnoreCase (String temperatura);
-
+	public Postagem findFirstByTemperaturaMinLessThanEqualAndTemperaturaMaxGreaterThanEqual(int temperatura1, int temperatura2);
+	
+	
 	
 	
 }

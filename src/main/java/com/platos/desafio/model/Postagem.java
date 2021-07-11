@@ -20,7 +20,10 @@ public class Postagem {
 	private String estilo;
 	
 	@NotNull
-	private String temperatura;
+	private int temperaturaMin;
+	
+	@NotNull
+	private int temperaturaMax;
 
 	public long getId() {
 		return id;
@@ -38,13 +41,20 @@ public class Postagem {
 		this.estilo = estilo;
 	}
 
-	public String getTemperatura() {
-		return temperatura;
+	public int getTemperaturaMin() {
+		return temperaturaMin;
 	}
 
-	public void setTemperatura(String temperatura) {
-		this.temperatura = temperatura;
+	public void setTemperaturaMin(int temperaturaMin) {
+		this.temperaturaMin = temperaturaMin;
 	}
-	
+
+	public int getTemperaturaMax() {
+		return temperaturaMax;
+	}
+
+	public void setTemperaturaMax(int temperaturaMax) {
+		this.temperaturaMax = temperaturaMax;
+	}
 
 }
