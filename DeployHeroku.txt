@@ -1,0 +1,44 @@
+Deploy no Heroku
+
+1º Passo: 
+Crie uma conta no Heroku em: https://www.heroku.com
+
+2º Passo: 
+Crie um arquivo system.properties na raiz do projeto.
+
+3º Passo: 
+coloque a seguinte informação no arquivo criado: java.runtime.version=11 (subistitua o 11 pela versão do java que você usou)
+
+4º Passo:
+Em aplication.properties, substitua os valores por: 
+spring.jpa.generate-ddl=true 
+spring.datasource.url=${JDBC_DATASOURCE_URL} 
+spring.jpa.show-sql=true
+
+5º Passo: 
+No pom.xml subtitua a dependência do MySql por:
+<dependency> <groupId>org.postgresql</groupId> <artifactId>postgresql</artifactId> <version>42.2.12</version> </dependency>
+
+6º Passo:
+Na pasta onde está sua aplicação abra o terminal e faça os seguintes comandos: 
+git init
+git add .
+git commit -m "mensagem"
+
+para instalar o heroku digite:
+npm i -g heroku 
+
+Para fazer login no heroku digite:
+heroku login
+
+Irá abrir uma página no navegador, é só clicar no botão logar e voltar para o terminal. Digite: 
+heroku create nomedoprojeto (sem letras maiúsculas)
+
+Para criar o projeto no heroku e o banco de dados, digite: 
+heroku addons:create heroku-postgresql:hobby-dev
+
+7º Passo:
+Para finalizar digite uma das opções abaixo, a depender de qual está usando:
+git push heroku master ou git push heroku main
+
+APÓS FINALIZAR IRÁ APARECER A URL PARA ABRIR O PROJETO NO NAVEGADOR.
